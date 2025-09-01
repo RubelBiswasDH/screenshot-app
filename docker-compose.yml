@@ -1,5 +1,6 @@
 services:
   app:
+    image: screenshot-app
     build:
       context: .
       dockerfile: Dockerfile
@@ -9,10 +10,8 @@ services:
       - .:/app
       - /app/node_modules
     environment:
-      - NODE_ENV=development
-      - PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
-      - PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
-    command: npm run start:dev
+      - NODE_ENV=production
+    command: npm run start:prod
     restart: unless-stopped
 
 networks:
