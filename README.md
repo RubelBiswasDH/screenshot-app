@@ -25,6 +25,58 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+## API Documentation
+
+This application provides screenshot capture functionality via REST API endpoints.
+
+### Base URL
+```
+http://localhost:3000
+```
+
+### Endpoints
+
+#### GET /
+Returns a hello message.
+
+- **Response**: `string` - Hello message
+
+#### GET /screenshot
+Captures a screenshot of the provided URL.
+
+- **Query Parameters**:
+  - `url` (string, required): The URL to capture screenshot of
+- **Headers**:
+  - `x-key` (string, required): API key for authentication (must match `EXTERNAL_KEY` env variable)
+- **Response**: Image file (PNG) of the screenshot
+- **Errors**:
+  - 401 Unauthorized: Invalid or missing API key
+
+#### GET /screenshot/run-status
+Returns the current run status of the screenshot service.
+
+- **Response**: JSON object with status information
+
+### Authentication
+All screenshot endpoints require an API key in the `x-key` header. Set the `EXTERNAL_KEY` environment variable with your desired key.
+
+## Docker
+
+### Build the Docker Image
+```bash
+docker build -t screenshot-app .
+```
+
+### Run the Docker Container
+```bash
+docker run -p 3000:3000 screenshot-app
+```
+
+The application will be available at `http://localhost:3000`.
+
+### Environment Variables
+- `EXTERNAL_KEY`: API key for screenshot endpoints (set during build or runtime)
+
 ## Project setup
 
 ```bash
