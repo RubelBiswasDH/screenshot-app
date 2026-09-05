@@ -143,4 +143,4 @@ Check out a few resources that may come in handy when working with NestJS:
 
 ## License
 
-This project is unlicensed (private / proprietary).
+This project is [MIT licensed](LICENSE).
